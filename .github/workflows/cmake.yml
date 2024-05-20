@@ -1,0 +1,22 @@
+name: build-and-test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    types: [opened]
+
+jobs:
+  build-and-test:
+    name: Build and test on ${{matrix.os}} in ${{matrix.build-type}} mode
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        build-type: [Debug]
+        os: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Print hello
+      run: echo "Hello"
